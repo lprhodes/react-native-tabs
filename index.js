@@ -61,7 +61,9 @@ class Tabs extends Component {
                        onPress={()=>!self.props.locked && self.onSelect(el)}
                        onLongPress={()=>self.onSelect(el)}
                        activeOpacity={el.props.pressOpacity}>
-                         {selected == (el.props.name || el.key) ? React.cloneElement(el, {selected: true, style: [el.props.style, this.props.selectedStyle, el.props.selectedStyle]}) : el}
+                        <View>
+                            {selected == (el.props.name || el.key) ? React.cloneElement(el, {selected: true, style: [el.props.style, this.props.selectedStyle, el.props.selectedStyle]}) : el}
+                        </View>
                     </TouchableWithoutFeedback>
                 )}
             </View>
