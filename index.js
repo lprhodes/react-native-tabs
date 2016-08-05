@@ -8,7 +8,7 @@ import {
     StyleSheet,
     View,
     Text,
-    TouchableOpacity,
+    TouchableWithoutFeedback,
     Keyboard,
     Platform,
 } from 'react-native';
@@ -56,13 +56,13 @@ class Tabs extends Component {
         return (
             <View style={[styles.tabbarView, this.props.style, this.state.keyboardUp && styles.hidden]}>
                 {React.Children.map(this.props.children.filter(c=>c),(el)=>
-                    <TouchableOpacity key={el.props.name+"touch"}
+                    <TouchableWithoutFeedback key={el.props.name+"touch"}
                        style={[styles.iconView, this.props.iconStyle, (el.props.name || el.key) == selected ? this.props.selectedIconStyle || el.props.selectedIconStyle || {} : {} ]}
                        onPress={()=>!self.props.locked && self.onSelect(el)}
                        onLongPress={()=>self.onSelect(el)}
                        activeOpacity={el.props.pressOpacity}>
                          {selected == (el.props.name || el.key) ? React.cloneElement(el, {selected: true, style: [el.props.style, this.props.selectedStyle, el.props.selectedStyle]}) : el}
-                    </TouchableOpacity>
+                    </TouchableWithoutFeedback>
                 )}
             </View>
         );
